@@ -9,11 +9,7 @@ const fn = "userList.csv";
 
 app.post("/register", (req, res) => {
   console.log(req.body);
-  const { email, password } = req.body;
-  const str = email + "," + password + "/n";
-  fs.appendFile(fn, str, (error) => {
-    console.log(error);
-  });
+
   res.send("Data received");
 });
 
@@ -21,6 +17,16 @@ app.get("/register", (req, res) => {
   //   res.send(`<h1>Register Page</h1>
   //  `);
   res.sendFile(__dirname + "/public/register.html");
+});
+app.get("/login", (req, res) => {
+  //   res.send(`<h1>Register Page</h1>
+  //  `);
+  res.sendFile(__dirname + "/public/login.html");
+});
+app.post("/login", (req, res) => {
+  //   res.send(`<h1>Register Page</h1>
+  //  `);
+  res.send("<h1>Login Sucessfull</h1>");
 });
 
 app.get("/", (req, res) => {
