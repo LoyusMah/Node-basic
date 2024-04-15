@@ -1,17 +1,23 @@
 import express from "express";
 import path from "path";
 const app = express();
-
+import fs from "fs";
+import { error } from "console";
 const __dirname = path.resolve();
 app.use(express.urlencoded());
+const fn = "userList.csv";
 
 app.post("/register", (req, res) => {
   console.log(req.body);
+  const { email, password } = req.body;
+  const str = email + "," + password + "/n";
+  fs.appendFile(fn, str, (error) => {
+    console.log(error);
+  });
   res.send("Data received");
 });
 
 app.get("/register", (req, res) => {
-  console.log(req.query);
   //   res.send(`<h1>Register Page</h1>
   //  `);
   res.sendFile(__dirname + "/public/register.html");
