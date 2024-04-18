@@ -26,6 +26,7 @@ app.get("/login", (req, res) => {
 app.post("/login", (req, res) => {
   //   res.send(`<h1>Register Page</h1>
   //  `);
+  // const {email, pasword}
   res.send("<h1>Login Sucessfull</h1>");
 });
 
